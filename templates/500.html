@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+500 Error
+{% endblock title %}
+
+<style>
+    .main {
+        margin-top: 5%;
+        text-align: center;
+      }
+      .main img {
+        width: 40%;
+        max-width: 420px;
+      }
+      .main h2 {
+        color: #3d4145;
+        font-size: 70px !important;
+        font-weight: 700;
+      }
+      .main h6 {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+      }
+      .main .error {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0vw;
+        color: rgba(0,0,0,.02);
+        font-size: 25vw;
+        text-align: center;
+        font-weight: 900;
+        font-family: sans-serif;
+        pointer-events: none;
+      }
+      @media (max-width: 500px) {
+        .main .error {
+            top: 50vw;
+          }
+      }
+</style>
+{% block content %}
+
+<div id="contact" class="section wb">
+    <div class='container'>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <main class="main">
+                <center><img src="{% static 'error_500.gif' %}" />
+                <h2>500 Error!</h2>
+                <h6>Something want wrong,<br />Internal Server Error, Try again</h6></center>
+            </main>
+        </div>
+    </div>
+</div>
+        
+    
+{% endblock content %} 

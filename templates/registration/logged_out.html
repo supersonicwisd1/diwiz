@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+LogOut
+{% endblock title %}
+
+{% block content %}
+<style>
+    .contact_form{
+        color: white !important;
+        padding-bottom: 20px;
+    }
+</style>
+<div id="contact" class="section wb">
+    <div class='container'>
+        <div class="section-title text-center">
+            <h2 class='head'>LogOut</h2>
+            <hr>
+        </div>
+    </div>
+    <div class='container w-60 col-lg-8 col-md-12 col-sm-12'>
+        <div class="contact_form">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class=""> 
+                <center><div>
+                    You have logged out. <br />
+                    Click the button below to log in. 
+                </div></center>
+            </div>
+            <div class="text-center pd w-60">
+                <button type="submit" value="LOGIN" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block"><a href="{% url 'login' %}" style="color: #fff !important;">Login</a></button>
+            </div>
+            </form> 
+        </div>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+    </div>
+{% endblock content %}

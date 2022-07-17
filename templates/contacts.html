@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Contact
+{% endblock title %}
+
+<style>
+    form{
+        color:black !important;
+    }
+</style>
+{% block content %}
+<div class="all-title-box" style="background-image:url('{% static 'images/gallery-logo.jpg' %} ');">
+    <div class="container text-center">
+        <h1 style="color: #000">Contact<span class="m_1" style="font-family:'Quintessential';">We are always open to your conversations</span></h1>
+    </div>
+</div>
+
+<div id="contact" class="section wb">
+    <div class="container">
+        {% if messages %} 
+            {% for message in messages %}
+        <div class="section-title text-center">
+            <h3>Thanks fro contacting us.</h3>
+            <p class="lead">We received you email and we will respond shortly...</p>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="section-title text-center">
+            <h3>Need Help? Sure we are Online!</h3>
+            <p class="lead">Let’s talk 👋 Your child’s education and future is important to us! Don’t hesitate to reach out with the contact information below, or send a message using the form.</p>
+        </div><!-- end title -->
+
+        <!--Begin Contact-->
+        <div class="container col-12" >
+                <div class="row">
+                    <div class="col-12 col-lg-5"> 
+                        <div class="contact_form info" style="color:#fabd02 !important;">
+                            <div id="message" style="color:white; font-size:20px; padding-bottom:5px;">Address</div>
+                            <p>3, Ajelogo, Road, Mile 12, Ketu, Lagos, Nigeria<br />8, Barbinton, Kosofe, Mile 12, Ketu, Lagos, Nigeria</p>
+                            <div id="message" style="color:white; font-size:20px; padding-bottom:5px;">Phone</div>
+                            <p>+2348064485032<br />+2348055101709</p>
+                            <div id="message" style="color:white; font-size:20px; padding-bottom:5px;">Email</div>
+                            <p><a href="mailto:diwizschools@gmail.com" style="color:orange !important;">diwizaacademy@gmail.com</a></li></p>
+                        </div>
+                    </div>
+                {% comment %} <div class="row"> {% endcomment %}
+                    <div class="col-12 col-lg-7"> 
+                        <div class="contact_form">
+                            <div id="message" style="color:white; font-size:20px; padding-bottom:5px;">Get in Touch</div>
+                            <form id="contactform" class="form" action="{% url 'contacts' %}" name="contactform" method="POST" style="color:white;">
+                                {% csrf_token %}
+                                {{ form | crispy }}
+                                    <div class="text-center pd">
+                                        <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- end col -->
+                {% comment %} </div> {% endcomment %}
+            </div>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+        </div><!-- end row --> 
+        <!-- Map section-->
+        <style>
+            .row{
+                margin-left: 5px !important;
+            }
+        </style>
+        <section class= "row">
+        
+        <div class="map-box col-12">
+            <div id="custom-places" class="small-map left">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m11!1m3!1d3963.3362199786243!2d3.
+                39749674896821!3d6.6050756002987185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b92e0c5bb8f45%3A0x9fe0e4c05ed55916!2s
+                3%20Ajelogo%20Market%20St%2C%20Mile%2012%20105102%2C%20Lagos!5e0!3m2!1sen!2sng!4v1657666379433!5m2!1sen!2sng" 
+                height="450" width="1200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    
+        <div class="map-box col-12">
+            <div id="custom-places" class="small-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.363686402788!2d3.
+                3927435142971922!3d6.601645624082613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b92e42a3ca1bd%3A0x219bc9a726e0d35e!
+                2sBarbington%20St%2C%20Mile%2012%20105102%2C%20Ikeja!5e0!3m2!1sen!2sng!4v1657671285332!5m2!1sen!2sng"
+                height="450" width="1200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        </div><!-- end container -->
+    </section>  
+</div><!-- end section -->
+{% endif %}
+
+
+{% endblock content %}

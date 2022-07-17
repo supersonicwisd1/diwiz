@@ -1,2 +1,27 @@
-
 /** ADD YOUR AWESOME CODES HERE **/
+
+.timeline__content {
+    background-image: url('../images/img-01.jpg') !important;
+    color: #fff !important;
+}
+
+.row {
+    float: left;
+    width: 77%;
+}
+
+.category {
+    float: right;
+    width: 20%;
+}
+
+@media only screen and (min-width: 50px) and (max-width: 990px) {
+    .row {
+        clear: both !important;
+        width: 100%;
+    }
+    .category {
+        clear: both;
+        width: 100%;
+    }
+}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Delete {{title}}
+{% endblock title %}
+
+{% block content %}
+<div id="contact" class="section wb">
+    <div class='container'>
+        <div class="section-title text-center">
+            <h2 class='head'>Delete {{title}}</h2>
+        </div>
+    </div>
+    <style>
+    .contact_form{
+        color: white !important;
+        padding-bottom: 20px !important;
+    }
+    </style>
+    <div class='container w-60 col-lg-8 col-md-12 col-sm-12'>
+        <div class="contact_form">
+            <form role="form" action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row row-fluid"> 
+                {% csrf_token %}
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    {{form|crispy }}
+                </div>
+            </div>
+            <div class="text-center pd">
+                <button type="submit" value="DELETE" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Delete</button>
+            </div>
+            </form> 
+        </div>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+    </div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% load static %}
+
+    <style>
+        .blog-img{
+            height: 35vh;
+            border-radius: 10px;
+            box-shadow: 10px;
+        }
+    </style>
+
+    <div class="blog-item col-lg-4 col-md-6 col-12" >
+        <div class="image-blog">
+            <img src="{{blog.image.url}}" alt="" class="blog-img">
+        </div>
+        <div class="meta-info-blog">
+            <span><i class="fa fa-calendar"></i> <a href="#">{{blog.date_added}}</a> </span>
+            <span><i class="fa fa-tag"></i>  <a href="#">{{blog.category}}</a> </span>
+            <span><i class="fa fa-comments"></i> <a href="#">
+            {% if comment %}
+            {{ object.number_of_comments }} Comment{{object.number_of_comments|pluralize}}
+            {% endif %}
+            </a></span>
+        </div>
+        <div class="blog-title">
+            <h2><a href="{% url 'blogSingle' blog.id %}" title="">{{blog.title}}</a></h2>
+        </div>
+        <div class="blog-desc">
+            <p>{{blog.summary}}</p>
+        </div>
+        <div class="blog-button">
+            <a class="hover-btn-new orange" href="{% url 'blogSingle' blog.id %}"><span>Read More<span></a>
+        </div>
+    </div>

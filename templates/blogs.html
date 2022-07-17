@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Blog
+{% endblock title %}
+
+{% block content %}
+
+<style>
+	@media only screen and (min-width: 760px){
+		.section-title{
+			float: left;
+			width: 77% !important;
+		}
+		.category{
+			float: right;
+			width: 20%;
+		}
+		.row{
+			clear: both !important;
+		}
+	}
+</style>
+
+<div class="all-title-box" style="background-image:url('{% static 'images/blog-banner2.jpg' %} ');">
+	<div class="container text-center">
+		<h1 style="color: #000">Blog<span class="m_1">Get Lastest information about DIWIZ. From meetings to activities to events and many more.</span></h1>
+	</div>
+</div>
+
+<div id="overviews" class="section wb">
+	<div class="container">
+		<div class="section-title row text-center">
+			<div class="col-md-8 offset-md-2">
+				<p class="lead">Remember to always come by. Vital information about your child's or wards' growth,
+					health, and educational growth. Thank you for trusting DIWIZ.
+				</p>
+			</div>
+		</div><!-- end title -->
+
+		<hr class="invis"> 
+		<div class="category right-single">
+			<div class="widget-search">
+				<div class="site-search-area">
+					<form method="GET" id="site-searchform" action="{% url 'search' %}">
+						<div>
+							<input class="input-text form-control" 
+							name="search_term" 
+							id="search-k" 
+							placeholder="Search blogs..." 
+							type="search"
+							value = {{search_term}}>
+							<input id="searchsubmit" value="Search" type="submit" style="background: #fabd02 url('{% static 'images/search-icon.png' %} ') no-repeat center 14px;">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+			
+		
+		<div class="row">
+			{% if blogs %}
+				{% for blog in blogs %}
+					{% include 'partials/_card.html'%}
+				{% endfor %}
+			{% else %}
+			{% include 'partials/_card.html'%}
+			{% endif %}
+		</div> <!--end rows -->
+				
+			
+	</div><!-- end container -->
+</div><!-- end section -->
+
+
+{% endblock content %}

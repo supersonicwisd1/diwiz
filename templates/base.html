@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +21,7 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{% static './images/favicon.ico' %} " type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static './images/diwiz-logo.png' %} " type="image/x-icon" />
     <link rel="apple-touch-icon" href="{% static './images/apple-touch-icon.png' %} ">
 
     <!-- Bootstrap CSS -->
@@ -33,6 +34,16 @@
     <link rel="stylesheet" href="{% static './css/responsive.css' %}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static './css/custom.css' %}">
+	<link rel="stylesheet" href="{% static './css/flaticon.css' %}">
+	<link rel="stylesheet" href="{% static './css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static './css/prettyPhoto.css' %}">
+	<link rel="stylesheet" href="{% static './css/timeline.min.css' %}">
+	<link rel="stylesheet" href="{% static './css/font-awesome.css' %}">
+	<link rel="stylesheet" href="{% static './css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static './css/animate.min.css' %}">
+	<link rel="stylesheet" href="{% static './css/animate.css' %}">
+	<link rel="stylesheet" href="{% static './css/bootstrap-touch-slider.css' %}">
+	<link rel="stylesheet" href="{% static './css/pr_loading.min.css' %}">
 
     <!-- additional font -->
     <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
@@ -40,92 +51,10 @@
     <!-- Modernizer for Portfolio -->
     <script src="{% static './js/modernizer.js' %}"></script>
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 <body class="host_version"> 
 
-	<!-- Modal -->
-	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header tit-up">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Customer Login</h4>
-			</div>
-			<div class="modal-body customer-box">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs">
-					<li><a class="active" href="#Login" data-toggle="tab">Login</a></li>
-					<li><a href="#Registration" data-toggle="tab">Registration</a></li>
-				</ul>
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<div class="tab-pane active" id="Login">
-						<form role="form" class="form-horizontal">
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="email1" placeholder="Name" type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="exampleInputPassword1" placeholder="Email" type="email">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-10">
-									<button type="submit" class="btn btn-light btn-radius btn-brd grd1">
-										Submit
-									</button>
-									<a class="for-pwd" href="javascript:;">Forgot your password?</a>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane" id="Registration">
-						<form role="form" class="form-horizontal">
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" placeholder="Name" type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="email" placeholder="Email" type="email">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="mobile" placeholder="Mobile" type="email">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="password" placeholder="Password" type="password">
-								</div>
-							</div>
-							<div class="row">							
-								<div class="col-sm-10">
-									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
-										Save &amp; Continue
-									</button>
-									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
-										Cancel</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	  </div>
-	</div>
-
-    {% comment %} <!-- LOADER -->
+    <!-- LOADER -->
 	<div id="preloader">
 		<div class="loader-container">
 			<div class="progress-br float shadow">
@@ -133,14 +62,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- END LOADER -->	 {% endcomment %}
-	
+	<!-- END LOADER -->	
+
 	<!-- Start header -->
 	<header class="top-navbar">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">
-					<img src="{% static './images/logo.png' %}" alt="" />
+				<a class="navbar-brand" href="{% url 'home' %}">
+					<img src="{% static './images/diwiz-logo.png' %}" alt="" /> <span style="color: #fff; font-size:24px;">DIWIZ <span style="color: #fabd02;">Schools</span></span>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -149,18 +78,26 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-						<li class="nav-item">
-							<a class="nav-link" href="blog.html" >News </a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
-						<li class="nav-item"><a class="nav-link" href="pricing.html">Gallery</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						<li class="nav-item active"><a class="nav-link" href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'abouts' %}"><i class="fa fa-institution"></i> About Us</a></li>
+                        {% if request.user.is_authenticated %}
+						<li class="nav-item"><a class="nav-link" href="{% url 'blogs' %}" ><i class="fa fa-info-circle"></i> News</a></li>
+                        {% endif %}
+						<li class="nav-item"><a class="nav-link" href="{% url 'galleries' %}"> <i class="fa fa-image"></i> Gallery</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}"><i class="fa fa-book"></i> Contact</a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-                        <li><a class="hover-btn-new log orange" href="#" data-toggle="modal" data-target="#login"><span>Donate</span></a></li>
+                    {% if request.user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log orange" href="{% url 'logout' %}"><span><i class="fa fa-sign-in"> Log Out</i></span></a></li>
                     </ul>
+                    {% else %}
+					<ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log orange" href="{% url 'login' %}"><span><i class="fa fa-sign-in"> Log in</i></span></a></li>
+                    </ul> &nbsp
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="hover-btn-new log orange" href="{% url 'signup' %}"><span><i class="fa fa-user-plus"> Sign Up</i></span></a></li>
+                    </ul>
+                    {% endif %}
 				</div>
 			</div>
 		</nav>
@@ -175,8 +112,9 @@
 	
     
 
-    <div class="parallax section dbcolor">
+    <div class="parallax section dbcolor" >
         <div class="container">
+            <h3 style="color:#000 !important; letter-spacing:7px; font-size:25px; font-family:Quintessential!important;"><center>In God's Wisdom We Trust.</center></h3>
         </div><!-- end container -->
     </div><!-- end section -->
 
@@ -191,11 +129,10 @@
                         <p> Follow us on these social media.</p>   
 						<div class="footer-right">
 							<ul class="footer-links-soi">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<!-- <li><a href="#"><i class="fa fa-github"></i></a></li> -->
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://www.facebook.com/ikelunanwa.orjiene"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://chat.whatsapp.com/J4WHchFkCXuF5QBwcdVrpJ"><i class="fa fa-whatsapp"></i></a></li>
 								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<!-- <li><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+								<li><a href="mailto:diwizschools@gmail.com"><i class="fa fa-envelope"></i></a></li>
 							</ul><!-- end links -->
 						</div>						
                     </div><!-- end clearfix -->
@@ -207,11 +144,18 @@
                             <h3>Information Link</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="contact.html">Contact</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'blogs' %}">News</a></li>
+                            <li><a href="{% url 'galleries' %}">Gallery</a></li>
+							<li><a href="{% url 'abouts' %}">About</a></li>
+							<li><a href="{% url 'contacts' %}">Contact</a></li>
+                            {% else %}
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'galleries' %}">Gallery</a></li>
+							<li><a href="{% url 'abouts' %}">About</a></li>
+							<li><a href="{% url 'contacts' %}">Contact</a></li>
+                            {% endif %}
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
@@ -223,11 +167,12 @@
                         </div>
 
                         <ul class="footer-links">
-                            <li><a href="mailto:diwizschools@gmail.com">diwizschools@gmail.com</a></li>
+                            <li><a href="mailto:diwizacademy@gmail.com">diwizaacademy@gmail.com</a></li>
                             <li><a href="#">www.diwizschools.com</a></li>
                             <li>3, Ajelogo Road, Mile 12, Lagos, Nigeria</li>
-                            <li><span label="tel">+2348064485032</span></li>
-                            <li><span label="tel">+2348055101709</span></li>
+                            <li>8, Barbinton, Kosofe, Mile 12, Ketu, Lagos, Nigeria</li>
+                            <li><a href="tel:+2348064485032"><span label="tel">+2348064485032</span></li></a>
+                            <li><a href="tel:+2348055101709"><span label="tel">+2348055101709</span></li></a>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
@@ -240,7 +185,7 @@
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-center">                   
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2022 <a href="#">DIWIZ</a> Design By : <a href="https://www.linkedin.com/in/kenechukwu-orjiene/" target="_blank">Orjiene Kenechukwu</a></p>
+                    <p class="footer-company-name">All Rights Reserved. &copy; {% now "Y" %} <a href="#">DIWIZ</a> Design By : <a href="https://www.linkedin.com/in/kenechukwu-orjiene/" target="_blank">Orjiene Kenechukwu</a></p>
                 </div>
             </div>
         </div><!-- end container -->
@@ -250,6 +195,8 @@
 
     <!-- ALL JS FILES -->
     <script src="{% static './js/all.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <!-- ALL PLUGINS -->
     <script src="{% static './js/custom.js' %}"></script>
 	<script src="{% static './js/timeline.min.js' %}"></script>

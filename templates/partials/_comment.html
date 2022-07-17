@@ -1,0 +1,18 @@
+{% load static %}
+<div id="comment-blog">
+    <ul class="comment-list">
+        <li class="comment">
+            <div class="avatar"><img alt="" src="images/avatar-01.jpg" class="avatar"></div>
+            <div class="comment-container">
+                <h5 class="comment-author"><a href="#">{{comment.name}}</a></h5>
+                <div class="comment-meta">
+                    <a href="#" class="comment-date link-style1">{{comment.date_added}}</a>
+                    {% comment %} <a class="comment-reply-link link-style3" href="#respond">Reply »</a> {% endcomment %}
+                </div>
+                <div class="comment-body">
+                    <p>{{comment.body}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

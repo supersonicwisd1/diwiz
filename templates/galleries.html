@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Gallery
+{% endblock title %}
+
+{% block content %}
+<div class="all-title-box" style="background-image:url('{% static 'images/gallery-banner.jpg' %} ');">
+	<div class="container text-center">
+		<h1 style="color: #000 !important;">Gallery<span class="m_1">Photos of DIWIZ.</span></h1>
+	</div>
+</div>
+
+<div id="overviews" class="section wb">
+	<div class="container">
+		<div class="section-title row text-center">
+			<div class="col-md-8 offset-md-2">
+				<p class="lead">
+					Catch us with out lastest activities and outings.
+				</p>
+			</div>
+		</div><!-- end title -->
+
+		<hr class="invis"> 
+
+		<style>
+			a:hover img, a:hover img{
+				box-shadow: 6px 6px 6px rgba(0, 0, 0, .6);
+				border-radius: 20px;
+				transform: rotate(5deg) scale(1) !important;
+			}
+		</style>	
+
+		<div class="row"> 
+			{% if photos %}
+				{% for photo in photos %}
+				<div class="col-lg-4 col-md-6 col-12">
+					<div class="course-item">
+						<div class="image-blog">
+							<a id="photo"><img src="{{photo.image.url}}" alt="{{photo.info}}" class="img-fluid"></a>
+						</div>
+					</div>
+				</div><!-- end col -->
+				{% endfor %}
+			
+			{% else %}
+			<p>Working on this page.</p>
+			{% endif %}
+		</div><!-- end row -->
+	</div><!-- end container -->
+</div><!-- end section -->
+{% endblock content %}

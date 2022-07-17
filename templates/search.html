@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Search Results for {{search_term}}
+{% endblock title %}
+{% block content %}
+<div class="contain">
+    <h2> Search results for "{{search_term}}"</h2>
+</div>
+<div class="row">
+    {% if blogs %}
+        {% for blog in blogs %}
+            {% include 'partials/_card.html'%}
+        {% endfor %}
+    {% else %}
+        <h1>Working on this page</h1>
+    {% endif %}
+    </div> <!--end rows -->
+{% endblock content %}

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% if self.blog %}
+	{% for ablog in self.blog %}
+	{{ablog.title}}
+	{% endfor %}
+{% else %}
+{{blog.title}}
+{% endif %}
+
+{% endblock title %}
+
+
+{% block content %}
+	
+	<div class="all-title-box" style="background-image:url('{% static 'images/blog-banner2.jpg' %} ');">
+		<div class="container text-center">
+			<h1>{{blog.title}}<span class="m_1"></span></h1>
+		</div>
+	</div>
+	
+    <div id="overviews" class="section wb">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-9 col-12 blog-post-single" >
+					{% if blogs %}
+						{% for blog in blogs %}
+						 <h2>Blog can't be Accessed </h2>
+						{% endfor %}
+					{% else %}
+						{% include 'partials/_card1.html ' %}
+					{% endif %}
+				</div>
+                    
+					
+					<div class="blog-author">
+						<div class="author-bio">
+							<h3 class="author_name"><a href="#">Orjiene Benedette</a></h3>
+							<h5>CEO at <a href="{% url 'home' %}">DIWIZ</a></h5>
+							<p class="author_det">
+								Every Child is your Child, Every Child is my Child. Let come together
+								to build our child/ward in the fear of God and in the canopy of moral to be competent
+								children no matter where they find themselves. 
+							</p>
+						</div>
+						<div class="author-desc">
+							<img src="{% static 'images/author-photo.png' %}" alt="about author">
+							<ul class="author-social">
+								<li><a href="https://www.facebook.com/ikelunanwa.orjiene"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="tel:+2348064485032"><i class="fa fa-phone"></i></a></li>
+								<li><a href="mailto:diwizschools@gmail.com"><i class="fa fa-envelope"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					{% if request.user.is_authenticated %}
+					<div class="blog-comments">
+						{% if comments %}
+						<h4>{{ object.number_of_comments }} Comment{{ object.number_of_comments|pluralize }}</h4>
+							{% for comment in comments %}
+							{% include 'partials/_comment.html ' %}
+							{% endfor %}
+						{% else %}
+							No Comments Yet...<a href="#">
+							Add One</a>
+						{% endif %}
+
+					<div class="comments-form">
+						<h4>Leave a comment</h4>
+						<div class="comment-form-main">
+							<form action="#" method="POST">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											{{comment_form | crispy}}
+										</div>
+									</div>
+									<div class="col-md-12 post-btn">
+										<button class="hover-btn-new orange"><span>Post Comment</span></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					{% endif %}
+                </div><!-- end col -->
+				<div class="col-lg-3 col-12 right-single">
+					<div class="widget-search">
+						<div class="site-search-area">
+							<form method="GET" id="site-searchform" action="{% url 'search' %}">
+								<div>
+									<input class="input-text form-control" name="search_term" id="search-k" placeholder="Search blogs..." type="search" value = {{search_term}}>
+									<input id="searchsubmit" value="Search" type="submit" style="background: #fabd02 url('{% static 'images/search-icon.png' %} ') no-repeat center 14px;">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    
+        </div><!-- end container -->
+    </div><!-- end section -->
+{% endblock content %}

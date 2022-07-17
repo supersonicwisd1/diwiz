@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="blog-item">
+    <div class="image-blog">
+        <img src="{{blog.image.url}}" alt="{{blog.title}}" class="img-fluid">
+    </div>
+    <div class="post-content">
+        <div class="post-date">
+            <span class="day">{% now "jS" %}</span>
+            <span class="month">{% now "F" %}</span>
+        </div>
+        <div class="meta-info-blog">
+            <span><i class="fa fa-calendar"></i> <a href="#">{{blog.date_added}}</a> </span>
+            <span><i class="fa fa-tag"></i>  <a href="#">{{blog.category}}</a> </span>
+            <span><i class="fa fa-comments"></i> <a href="#">{{ object.number_of_comments }} Comment{{ object.number_of_comments|pluralize }}</a></span>
+        </div>
+        <div class="blog-title">
+            <h2><a href="#" title="">{{blog.title}}</a></h2>
+        </div>
+        <div class="blog-desc">
+            <p>{{blog.info}}</p>
+        </div>							
+    </div>
